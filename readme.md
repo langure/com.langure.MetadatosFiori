@@ -13,4 +13,4 @@ Metadatos Manager built on SAPUI5
  Component-preload.js net::ERR_ABORTED 404 (Not Found)
  failed to load JavaScript resource: com/langure/metadatosfiori/Component-preload.js -  sap.ui.ModuleSystem
 
- It is possible prevent these errors from appearing by configuring the bootsrap as data-sap-ui-preload="off", however, this means that the application is being blocked from running while the SAPUI5 libraries are being loaded from the CDN. This greatly degrades the performance during initialization.
+ It is possible prevent these errors from appearing by configuring the bootstrap as data-sap-ui-preload="off", however, this means that the application is being blocked from running while the SAPUI5 libraries are being loaded from the CDN. This greatly degrades the performance during initialization.
