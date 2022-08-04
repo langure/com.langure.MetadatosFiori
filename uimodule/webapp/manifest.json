@@ -37,7 +37,9 @@
       "minUI5Version": "1.102.0",
       "libs": {
         "sap.m": {},
-        "sap.ui.core": {}
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.uxap": {}
       }
     },
     "contentDensities": {
@@ -71,20 +73,42 @@
       },
       "routes": [
         {
-          "name": "RouteMainView",
-          "pattern": ":?query:",
+          "name": "Home",
+          "pattern": "RouteHome",
           "target": [
-            "TargetMainView"
+            "TargetHome"
+          ]
+        },
+        {
+          "name": "Login",
+          "pattern": "",
+          "target": [
+            "TargetLogin"
+          ]
+        },
+        {
+          "name": "Detail",
+          "pattern": "RouteDetail/",
+          "target": [
+            "TargetDetail"
           ]
         }
       ],
       "targets": {
-        "TargetMainView": {
+        "TargetHome": {
           "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "MainView",
-          "viewName": "MainView"
+          "viewId": "Home",
+          "viewName": "Home"
+        },
+        "TargetLogin": {
+          "viewType": "XML",
+          "viewId": "Login",
+          "viewName": "Login"
+        },
+        "TargetDetail": {
+          "viewType": "XML",
+          "viewId": "Detail",
+          "viewName": "Detail"
         }
       }
     },

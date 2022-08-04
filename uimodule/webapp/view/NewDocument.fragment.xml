@@ -1,0 +1,69 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:f="sap.ui.layout.form"
+   xmlns:l="sap.ui.layout"
+   xmlns:core="sap.ui.core" >
+   <Dialog
+      id="newDocumentDialog"
+      title="Creación de nuevo Tipo de Documento">
+      <f:SimpleForm
+            id="detailMetadatoSimpleForm"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            labelSpanL="4"
+            labelSpanM="4"
+            labelSpanS="6"
+            adjustLabelSpan="True"
+            emptySpanL="0"
+            emptySpanM="0"
+            emptySpanS="0"
+            columnsL="1"
+            columnsM="1"
+            singleContainerFullSize="false" >
+
+            <f:content>
+                <Label text="Tipo documento">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Input id="new_tipo_documento" value="{newDocumentModel>/newTipoDocumento}" valueLiveUpdate="true" liveChange=".onTipoDocumentoLiveChange">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input>
+                  <Label text="Tipo de objeto">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Input id="new_tipo_objeto" value="{newDocumentModel>/newTipoObjeto}" valueLiveUpdate="true" liveChange=".onTipoObjetoLiveChange">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input>
+                  <Label text="Sistema">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Input id="new_sistema" value="{newDocumentModel>/newSistema}" valueLiveUpdate="true" liveChange=".onSistemaLiveChange">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input>                
+            </f:content>
+        </f:SimpleForm>
+      <beginButton>
+         <Button
+            text="Crear nuevo Tipo de documento"
+            press=".onCloseAndCreateDialog"/>
+      </beginButton>
+      <endButton>
+         <Button
+            type="Reject"
+            text="Cancelar"
+            press=".onCloseDialog"/>
+      </endButton>      
+   </Dialog>
+</core:FragmentDefinition>

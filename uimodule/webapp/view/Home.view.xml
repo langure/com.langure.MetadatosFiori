@@ -1,0 +1,53 @@
+ <mvc:View controllerName="com.langure.MetadatosFiori.controller.Home"
+  displayBlock="true"
+  xmlns="sap.m"
+  xmlns:table="sap.ui.table"
+  xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+  xmlns:mvc="sap.ui.core.mvc">
+	
+  <Page title = "Administración de metadatos" showHeader="true" enableScrolling="true" class="sapUiContentPadding">
+  		<headerContent>
+			  <Button text="Log out" type="Reject" press="onLogout"/>
+		</headerContent>
+    <content>
+			<core:Fragment fragmentName="com.langure.MetadatosFiori.view.BusyDialog" type="XML" />
+    		<table:Table rows="{/documentos}" selectionMode="Single"	visibleRowCount="20"	selectionBehavior="RowOnly"	ariaLabelledBy="title" cellClick="onItemPress">
+				<table:extension>
+            <OverflowToolbar style="Clear">
+              <Title id="title" text="Tipos de documentos homologados - {/documentos/length}"/>
+              	<ToolbarSpacer/>
+                <Button icon="sap-icon://create" tooltip="Crear nuevo Tipo de Documento"	press="onCreateNewDocument" type="Emphasized"/>
+            </OverflowToolbar>
+          </table:extension>
+          <table:columns>
+              <table:Column>
+                <Label text="Tipo de documento"/>
+                <table:template>
+                  <Text text="{tipo_documento}" wrapping="true"/>
+                </table:template>                
+              </table:Column>
+              <table:Column>
+                <Label text="Tipo de objeto"/>
+                <table:template>
+                  <Text text="{tipo_objeto}" wrapping="true"/>
+                </table:template>                
+              </table:Column>             
+              <table:Column>
+                <Label text="Metadatos"/>
+                <table:template>
+                  <Text text="{metadatos/length}" wrapping="true"/>
+                </table:template>                
+              </table:Column> 
+              <table:Column>
+                <Label text="Sistema"/>
+                <table:template>
+                  <Text text="{sistemas/0/sistema}" wrapping="true"/>
+                </table:template>                
+              </table:Column>                                                        
+          </table:columns>
+        </table:Table>
+    </content>
+  </Page>
+
+</mvc:View>

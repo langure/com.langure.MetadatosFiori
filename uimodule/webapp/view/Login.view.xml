@@ -1,0 +1,24 @@
+ <mvc:View controllerName="com.langure.MetadatosFiori.controller.Login"
+  displayBlock="true"
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc">
+  <Page title="{i18n>title}" id="Login" >
+    <content>
+   <VBox fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center">
+    <items>
+    <Text text = "Ingrese sus credenciales para comenzar" class='sapUiMediumMargin'/>
+     <Input id="uid" placeholder="User ID" value = "{/usuario}"></Input>
+     <Input id="pasw" placeholder="Password" type="Password" value = "{/password}"></Input>
+     <Button width="12rem" text="Login" type="Emphasized" press="onLoginTap" class='sapUiMediumMargin'></Button>
+    </items>
+   </VBox>   
+    </content>
+    		<footer>
+        <OverflowToolbar>
+				<ToolbarSpacer/>
+				<Text text = "2022 - powered by SAPUI5"/>
+				<ToolbarSpacer/>
+			</OverflowToolbar>
+		</footer>
+  </Page>
+</mvc:View>

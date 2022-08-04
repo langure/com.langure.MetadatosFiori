@@ -1,0 +1,169 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:f="sap.ui.layout.form"
+   xmlns:l="sap.ui.layout"
+   xmlns:core="sap.ui.core" >
+   <Dialog
+      id="editMetadatoDialog"
+      title="{/selectedMetadato/descripcion_campo}">
+      <f:SimpleForm
+            id="detailMetadatoSimpleForm"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            labelSpanL="4"
+            labelSpanM="4"
+            labelSpanS="6"
+            adjustLabelSpan="True"
+            emptySpanL="0"
+            emptySpanM="0"
+            emptySpanS="0"
+            columnsL="1"
+            columnsM="1"
+            singleContainerFullSize="false" >
+
+            <f:content>
+                <Label text="Es llave">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Switch type="AcceptReject" state="{/selectedMetadato/llave}">
+				    <layoutData>
+				    	<FlexItemData growFactor="1" />
+				    </layoutData>
+			    </Switch>
+                <Label text="Campo">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Input id="campo" value="{/selectedMetadato/campo}">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input>
+                  <Label text="Orden">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Input id="orden" value="{/selectedMetadato/orden}">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input>                
+                <Label text="Metadato">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Input id="metadato" value="{/selectedMetadato/metadato}">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input>    
+                <Label text="Descripción campo">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Input id="descripcion_campo" value="{/selectedMetadato/descripcion_campo}">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input>
+                <Label text="Tipo dato">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>                
+                <Input id="tipo_dato" value="{/selectedMetadato/tipo_dato}">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input>    
+                <Label text="Longitud dato">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Input id="longitud_dato" value="{/selectedMetadato/longitud_dato}">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input> 
+                 <Label text="Ayúda búsqueda">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>                
+                <Input id="ayuda_busqueda" value="{/selectedMetadato/ayuda_busqueda}">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input>    
+                <Label text="Formato">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Input id="formato" value="{/selectedMetadato/formato}">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input> 
+                  <Label text="Metadato autorización">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Input id="metadato_autorizacion" value="{/selectedMetadato/metadato_autorizacion}">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input> 
+                <Label text="Frente">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Input id="frente" value="{/selectedMetadato/frente}">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input> 
+                <Label text="Descripción homologada">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Input id="descripcion_homologada" value="{/selectedMetadato/descripcion_homologada}">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input> 
+                <Label text="Metadato homologado">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Input id="metadato_homologado" value="{/selectedMetadato/metadato_homologado}">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input>                                                                                              
+            </f:content>
+        </f:SimpleForm>
+      <beginButton>
+         <Button
+            text="Guardar y cerrar"
+            press="onSaveAndCloseDialog"/>
+      </beginButton>
+      <endButton>
+         <Button
+            text="Borrar metadato"
+            type="Reject"
+            press="onDeleteMetadato"/>
+      </endButton>      
+   </Dialog>
+</core:FragmentDefinition>

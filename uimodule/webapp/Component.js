@@ -1,9 +1,11 @@
 sap.ui.define([
         "sap/ui/core/UIComponent",
         "sap/ui/Device",
-        "com/langure/MetadatosFiori/model/models"
+        "com/langure/MetadatosFiori/model/models",
+        "./Firebase",
+        "./Mongodb",
     ],
-    function (UIComponent, Device, models) {
+    function (UIComponent, Device, models, Firebase, Mongodb) {
         "use strict";
 
         return UIComponent.extend("com.langure.MetadatosFiori.Component", {
@@ -25,6 +27,10 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
+                // set firebase model
+                this.setModel(Firebase.initializeFirebase(), "firebase");
+                // set MongoDB model
+                this.setModel(Mongodb.initializeMongodb(), "mongodb");
             }
         });
     }

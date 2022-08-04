@@ -1,0 +1,119 @@
+ <mvc:View controllerName="com.langure.MetadatosFiori.controller.Detail"
+  displayBlock="true"
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:table="sap.ui.table"  
+  xmlns:mvc="sap.ui.core.mvc">
+  <Page title="{/document/tipo_documento}" id="Detail" >
+    		<headerContent>
+        <Button text="Regresar" type="Default" press="onBack"/>
+			  <Button text="Log out" type="Reject" press="onLogout"/>
+		</headerContent>
+    <content>
+	<MessageStrip
+		class="sapUiTinyMargin"
+		text="Edición del tipo de documento seleccionado."
+		type="Information"
+		showIcon="true">
+	</MessageStrip>
+    	<OverflowToolbar id="otb1">
+		<Label text="Acciones:"/>
+		<ToolbarSpacer/>
+    <Button text="Agregar metadato" type="Transparent" press="onAgregarMetadato"/>
+		<Button text="Borrar Tipo de Documento" type="Reject" press="onDeleteDocument"/>
+	</OverflowToolbar>  
+        <f:SimpleForm
+            id="tipoMetadatoSimpleForm"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            labelSpanL="4"
+            labelSpanM="4"
+            labelSpanS="6"
+            adjustLabelSpan="True"
+            emptySpanL="0"
+            emptySpanM="0"
+            emptySpanS="0"
+            columnsL="1"
+            columnsM="1"
+            singleContainerFullSize="false" >
+
+            <f:content>
+                <Label text="Tipo de documento">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Input id="tipo_de_documento" value="{/document/tipo_documento}" editable="false">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input>
+                <Label text="Tipo de objeto">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Input id="tipo_de_objeto" value="{/document/tipo_objeto}" editable="false">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+                </Input>
+            </f:content>
+        </f:SimpleForm>
+        <table:Table rows="{/document/metadatos}" selectionMode="Single"	visibleRowCount="15"	
+        selectionBehavior="RowOnly"	ariaLabelledBy="title" cellClick="onItemPress">
+            <table:columns>
+                <table:Column>
+                    <Label text="Descripción del campo"/>
+                    <table:template>
+                      <Text text="{descripcion_campo}" wrapping="true"/>
+                    </table:template>
+                </table:Column>
+                <table:Column>
+                    <Label text="Es llave"/>
+                    <table:template>
+                      <Text text="{llave}" wrapping="true"/>
+                    </table:template>
+                </table:Column>   
+                <table:Column>
+                    <Label text="Campo"/>
+                    <table:template>
+                      <Text text="{campo}" wrapping="true"/>
+                    </table:template>
+                </table:Column>  
+                <table:Column>
+                    <Label text="Metadato"/>
+                    <table:template>
+                      <Text text="{metadato}" wrapping="true"/>
+                    </table:template>
+                </table:Column>  
+                <table:Column>
+                    <Label text="Tipo de dato"/>
+                    <table:template>
+                      <Text text="{tipo_dato}" wrapping="true"/>
+                    </table:template>
+                </table:Column>   
+                <table:Column>
+                    <Label text="Frente"/>
+                    <table:template>
+                      <Text text="{frente}" wrapping="true"/>
+                    </table:template>
+                </table:Column>  
+                <table:Column>
+                    <Label text="Desc. Homologada"/>
+                    <table:template>
+                      <Text text="{descripcion_homologada}" wrapping="true"/>
+                    </table:template>
+                </table:Column>  
+                <table:Column>
+                    <Label text="Metadato Homologado"/>
+                    <table:template>
+                      <Text text="{metadato_homologado}" wrapping="true"/>
+                    </table:template>
+                </table:Column>                                                                                                                                                                
+            </table:columns>
+        </table:Table>
+    </content>
+  </Page>
+</mvc:View>
