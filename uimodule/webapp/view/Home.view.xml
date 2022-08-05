@@ -12,7 +12,44 @@
 		</headerContent>
     <content>
 			<core:Fragment fragmentName="com.langure.MetadatosFiori.view.BusyDialog" type="XML" />
-    		<table:Table rows="{/documentos}" selectionMode="Single"	visibleRowCount="20"	selectionBehavior="RowOnly"	ariaLabelledBy="title" cellClick="onItemPress">
+
+
+	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Documentos"
+				 frameType = "OneByHalf" subheader="" press="">
+		<TileContent unit="" footer="" >
+			<NumericContent value="{/documentos/length}" valueColor="Good" withMargin="true" />
+		</TileContent>
+	</GenericTile>
+	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Metadatos"
+				 frameType = "OneByHalf" subheader="" press="">
+		<TileContent unit="" footer="" >
+			<NumericContent value="{/documentos/length}" valueColor="Good" withMargin="true" />
+		</TileContent>
+	</GenericTile>
+
+  	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Sistemas"
+				 frameType = "OneByHalf" subheader="" press="">
+		<TileContent unit="" footer="" >
+			<NumericContent value="{/documentos/length}" valueColor="Good" withMargin="true" />
+		</TileContent>
+	</GenericTile>
+
+  	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Campos llave"
+				 frameType = "OneByHalf" subheader="" press="">
+		<TileContent unit="" footer="" >
+			<NumericContent value="{/documentos/length}" valueColor="Good" withMargin="true" />
+		</TileContent>
+	</GenericTile>
+
+    	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Frentes"
+				 frameType = "OneByHalf" subheader="" press="">
+		<TileContent unit="" footer="" >
+			<NumericContent value="{/documentos/length}" valueColor="Good" withMargin="true" />
+		</TileContent>
+	</GenericTile>
+
+
+    		<table:Table rows="{/documentos}" selectionMode="Single"	visibleRowCount="15"	selectionBehavior="RowOnly"	ariaLabelledBy="title" cellClick="onItemPress">
 				<table:extension>
             <OverflowToolbar style="Clear">
               <Title id="title" text="Tipos de documentos homologados - {/documentos/length}"/>
@@ -48,6 +85,13 @@
           </table:columns>
         </table:Table>
     </content>
+    <footer>
+        <OverflowToolbar>
+				<ToolbarSpacer/>
+				<Text text = "2022 - powered by SAPUI5"/>
+				<ToolbarSpacer/>
+			</OverflowToolbar>
+		</footer>
   </Page>
 
 </mvc:View>

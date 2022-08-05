@@ -7,7 +7,7 @@
       id="newDocumentDialog"
       title="Creación de nuevo Tipo de Documento">
       <f:SimpleForm
-            id="detailMetadatoSimpleForm"
+            id="newDocumentSimpleForm"
             editable="true"
             layout="ResponsiveGridLayout"
             labelSpanL="4"
@@ -20,7 +20,6 @@
             columnsL="1"
             columnsM="1"
             singleContainerFullSize="false" >
-
             <f:content>
                 <Label text="Tipo documento">
                     <layoutData>
@@ -51,13 +50,23 @@
                     <layoutData>
                         <l:GridData span="L4 M4 S12"/>
                     </layoutData>
-                </Input>                
+                </Input> 
+                <Label text="Multiple">
+                    <layoutData>
+                        <l:GridData span="L2 M2 S12"/>
+                    </layoutData>
+                </Label>
+                <Switch type="AcceptReject" state="{newDocumentModel>/multiple}">
+                    <layoutData>
+                        <l:GridData span="L4 M4 S12"/>
+                    </layoutData>
+			    </Switch>               
             </f:content>
         </f:SimpleForm>
       <beginButton>
          <Button
             text="Crear nuevo Tipo de documento"
-            press=".onCloseAndCreateDialog"/>
+            press=".onCloseAndCreateNewDocument"/>
       </beginButton>
       <endButton>
          <Button

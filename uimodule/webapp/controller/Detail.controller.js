@@ -1,7 +1,7 @@
 sap.ui.define(["com/langure/MetadatosFiori/controller/BaseController",
                "sap/ui/model/json/JSONModel",
-               ], 
-    function (Controller, JSONModel) {
+               "sap/m/MessageBox"], 
+    function (Controller, JSONModel, MessageBox) {
     "use strict";
 
     return Controller.extend("com.langure.MetadatosFiori.controller.Detail", {
@@ -53,7 +53,9 @@ sap.ui.define(["com/langure/MetadatosFiori/controller/BaseController",
             this.byId("editMetadatoDialog").close();
           },
           onDeleteDocument(){
-            sap.ui.require("sap/m/MessageBox");
+            //debugger
+            //sap.ui.require("sap/m/MessageBox");
+            //let ms = sap.m.MessageBox;
             sap.m.MessageBox.show("¿Borrar tipo de documento? Esta acción no se puede deshacer.", {
             icon: sap.m.MessageBox.Icon.WARNING,
             title: "CONFIRMACIÓN",

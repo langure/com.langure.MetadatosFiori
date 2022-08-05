@@ -1,8 +1,9 @@
 sap.ui.define(["com/langure/MetadatosFiori/controller/BaseController",
                "sap/ui/model/json/JSONModel",
                "sap/ui/core/mvc/Controller",
+               'sap/m/MessageToast', 
                "sap/m/MessageBox"],
-    function (Controller, JSONModel, MessageBox) {
+    function (Controller, JSONModel, MessageToast, MessageBox) {
     "use strict";
 
     return Controller.extend("com.langure.MetadatosFiori.controller.Home", {
@@ -35,7 +36,6 @@ sap.ui.define(["com/langure/MetadatosFiori/controller/BaseController",
             })
         },
         processRawData(rawData){
-            
             var rawDocuments = rawData.documents;
             for (let i = 0; i < rawDocuments.length; i++){
                 if(rawDocuments[i].metadatos){
@@ -52,8 +52,6 @@ sap.ui.define(["com/langure/MetadatosFiori/controller/BaseController",
                     rawDocuments[i].llaves = llaves;
                     rawDocuments[i].metadatos = [];
                 }
-
-                
             }// documents
             return rawDocuments;
         },
@@ -70,19 +68,17 @@ sap.ui.define(["com/langure/MetadatosFiori/controller/BaseController",
            documentModel.setData({
             document:this.getView().getModel().getProperty(v)
            });
-           
            sap.ui.getCore().setModel(documentModel,"documentModel");
            this.getRouter().navTo("Detail");
         },
         onCreateNewDocument(){
-            var newDocumentModel = new JSONModel({
+               var newDocumentModel = new JSONModel({
                 newTipoDocumento : "",
                 newTipoObjeto : "",
                 newSistema : "",
+                multiple : false,
             });
-
             this.getView().setModel(newDocumentModel, "newDocumentModel");
-
             // create dialog lazily
 			if (!this.pDialog) {
 				this.pDialog = this.loadFragment({
@@ -92,11 +88,16 @@ sap.ui.define(["com/langure/MetadatosFiori/controller/BaseController",
 			this.pDialog.then(function(oDialog) {
 				oDialog.open();
 			});
-
         },
-        onCloseAndCreateDialog(){
-            sap.ui.require("sap/m/MessageBox");
-
+        tipoObjetoIsUnique(new_tipo_objeto){            
+            var currentDocumentos = this.getView().getModel().getProperty("/documentos");                        
+            for(let i = 0; i < currentDocumentos.length; i++){
+                if (new_tipo_objeto === currentDocumentos[i]["tipo_objeto"]) return false;
+            }
+            return true;
+        },
+        onCloseAndCreateNewDocument(){
+      
             // validations.
             var m = this.getView().getModel("newDocumentModel");
             var validated = true;
@@ -112,8 +113,13 @@ sap.ui.define(["com/langure/MetadatosFiori/controller/BaseController",
                  this.byId("new_sistema").setValueState(sap.ui.core.ValueState.Error);
                  validated = false;
             }
-            if(!validated) return;
-
+            // tipo de objeto needs to be unique
+            if(!this.tipoObjetoIsUnique(m.getProperty("/newTipoObjeto"))){
+                this.byId("new_tipo_objeto").setValueState(sap.ui.core.ValueState.Error);
+                validated = false;
+                MessageToast.show("El nombre de 'Tipo de Objeto' se encuentra repetido");
+            }
+            if(!validated) return; 
             sap.m.MessageBox.show("¿Crear nuevo tipo de documento?", {
                 icon: sap.m.MessageBox.Icon.QUESTION,
                 title: "CONFIRMACIÓN",
