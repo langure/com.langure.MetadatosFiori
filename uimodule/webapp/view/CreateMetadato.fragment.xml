@@ -141,16 +141,6 @@
                     <layoutData>
                         <l:GridData span="L4 M4 S12"/>
                     </layoutData>
-                </Input> 
-                <Label text="Metadato homologado">
-                    <layoutData>
-                        <l:GridData span="L2 M2 S12"/>
-                    </layoutData>
-                </Label>
-                <Input id="new_metadato_homologado" value="{oNewMetadatoModel>/metadato_homologado}">
-                    <layoutData>
-                        <l:GridData span="L4 M4 S12"/>
-                    </layoutData>
                 </Input>                                                                                              
             </f:content>
         </f:SimpleForm>

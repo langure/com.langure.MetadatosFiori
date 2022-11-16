@@ -2,8 +2,9 @@ sap.ui.define(["com/langure/MetadatosFiori/controller/BaseController",
                "sap/ui/model/json/JSONModel",
                "sap/ui/core/mvc/Controller",
                'sap/m/MessageToast', 
-               "sap/m/MessageBox"],
-    function (Controller, JSONModel, MessageToast, MessageBox) {
+               "sap/m/MessageBox",
+               "com/langure/MetadatosFiori/libs/FileSaver"],
+    function (Controller, JSONModel, MessageToast, MessageBox, FileSaver) {
     "use strict";
 
     return Controller.extend("com.langure.MetadatosFiori.controller.Home", {
@@ -25,15 +26,50 @@ sap.ui.define(["com/langure/MetadatosFiori/controller/BaseController",
             
             fetch(getDocumentsURI.concat("?token=",token)).then(response => response.json()).then(data => {
                 var model = new JSONModel();            
-                this.getView().setModel(model);                                
+                this.getView().setModel(model);
+                let documentos = this.processRawData(data.data);
                 model.setData({
-                    documentos:this.processRawData(data.data),
+                    documentos: documentos,
                     busy:false,
                     order:0,
                     enabledButtons:false
-                });
+                });                
+                let sModel = this.createStadistics(documentos);
+                this.getView().setModel(sModel, "stadisticsModel");
                 oDialog.close();
             })
+        },
+        createStadistics(documentos){    
+            let metadatos = [], sistemas = new Set(), campos_llave = 0, frentes = new Set();
+            
+            for(let i = 0; i < documentos.length; i++){
+                metadatos.push(...documentos[i].metadatos);
+                let sis = documentos[i].sistemas;
+                for(let j = 0; j < documentos[i].sistemas.length; j++)
+                    sistemas.add(documentos[i].sistemas[j].sistema);
+                for(let j = 0; j < documentos[i].metadatos.length; j++){  
+                    let m = metadatos[j];
+                    if(m !== undefined){
+                        if(metadatos[j]["llave"]){
+                            campos_llave++;
+                        }// if campo llave  
+                    }// if there are metadatos
+                }// for metadatos
+            }// for documentos
+
+            for(let i = 0; i < metadatos.length; i++){
+                frentes.add(metadatos[i]["frente"]);
+            }            
+            let stadisticsModel = new JSONModel(); 
+            stadisticsModel.setData(
+                {
+                    sMetadatos : metadatos.length,
+                    sSistemas : sistemas.size,
+                    sCamposLlave : campos_llave,
+                    sFrentes : frentes.size
+                }
+            );
+            return stadisticsModel;
         },
         processRawData(rawData){
             var rawDocuments = rawData.documents;
@@ -148,6 +184,14 @@ sap.ui.define(["com/langure/MetadatosFiori/controller/BaseController",
                 }.bind(this)
             });
           },
+          onGetCSV(){
+            
+          },
+          onGetJSON(){
+            debugger
+            var blob = new Blob(["Prueba"], {type: "text/plain;charset=utf-8"});
+            saveAs(blob, "prueba.json");
+          },  
           onCloseDialog(){
             this.byId("newDocumentDialog").close();     
           },

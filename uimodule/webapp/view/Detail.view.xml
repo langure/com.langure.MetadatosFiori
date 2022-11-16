@@ -105,12 +105,6 @@
                     <table:template>
                       <Text text="{descripcion_homologada}" wrapping="true"/>
                     </table:template>
-                </table:Column>  
-                <table:Column>
-                    <Label text="Metadato Homologado"/>
-                    <table:template>
-                      <Text text="{metadato_homologado}" wrapping="true"/>
-                    </table:template>
                 </table:Column>                                                                                                                                                                
             </table:columns>
         </table:Table>

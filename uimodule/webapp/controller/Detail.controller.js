@@ -53,9 +53,6 @@ sap.ui.define(["com/langure/MetadatosFiori/controller/BaseController",
             this.byId("editMetadatoDialog").close();
           },
           onDeleteDocument(){
-            //debugger
-            //sap.ui.require("sap/m/MessageBox");
-            //let ms = sap.m.MessageBox;
             sap.m.MessageBox.show("¿Borrar tipo de documento? Esta acción no se puede deshacer.", {
             icon: sap.m.MessageBox.Icon.WARNING,
             title: "CONFIRMACIÓN",
@@ -212,6 +209,6 @@ sap.ui.define(["com/langure/MetadatosFiori/controller/BaseController",
           }, 
           onMetadatoLiveChange(){
             this.byId("new_metadato").setValueState(sap.ui.core.ValueState.Success)
-        },                       
+        },                         
     });    
 });

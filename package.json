@@ -34,5 +34,8 @@
     "dependencies": [
       "ui5-middleware-livereload"
     ]
+  },
+  "dependencies": {
+    "file-saver": "^2.0.5"
   }
 }
